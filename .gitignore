@@ -1,0 +1,9 @@
+node_modules/
+dist/
+releases/
+*.log
+.DS_Store
+*.zip
+*.xpi
+*.LICENSE.txt
+web-ext-artifacts/

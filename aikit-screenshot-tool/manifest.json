@@ -1,0 +1,29 @@
+{
+  "manifest_version": 2,
+  "name": "AIKit Screenshot Tool",
+  "version": "0.0.1",
+  "description": "Screenshot capture tools for AIKit Orchestrator",
+  "permissions": [
+    "activeTab",
+    "tabs",
+    "downloads",
+    "<all_urls>"
+  ],
+  "background": {
+    "scripts": ["background.js"]
+  },
+  "icons": {
+    "48": "icons/icon-48.png",
+    "96": "icons/icon-96.png"
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "aikit-screenshot-tool@bnode.dev",
+      "strict_min_version": "109.0",
+      "data_collection_permissions": {
+        "required": ["websiteContent"],
+        "optional": []
+      }
+    }
+  }
+}

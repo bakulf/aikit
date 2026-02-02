@@ -1,0 +1,24 @@
+{
+  "manifest_version": 2,
+  "name": "AIKit Find Tool",
+  "version": "0.0.1",
+  "description": "Find in page tools for AIKit",
+  "permissions": [
+    "tabs",
+    "find",
+    "activeTab"
+  ],
+  "background": {
+    "scripts": ["background.js"]
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "aikit-find-tool@bnode.dev",
+      "strict_min_version": "109.0",
+      "data_collection_permissions": {
+        "required": ["websiteContent"],
+        "optional": []
+      }
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "manifest_version": 2,
+  "name": "AIKit Bookmarks Tool",
+  "version": "0.0.1",
+  "description": "Provides bookmark management tools for AIKit Orchestrator",
+  "permissions": [
+    "bookmarks"
+  ],
+  "background": {
+    "scripts": ["background.js"]
+  },
+  "icons": {
+    "48": "icons/icon-48.png",
+    "96": "icons/icon-96.png"
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "aikit-bookmarks-tool@bnode.dev",
+      "strict_min_version": "109.0",
+      "data_collection_permissions": {
+        "required": ["bookmarksInfo"],
+        "optional": []
+      }
+    }
+  }
+}

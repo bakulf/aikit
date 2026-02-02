@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>AIKit Assistant</title>
+  <link rel="stylesheet" href="sidebar.css">
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="header-left">
+        <svg class="logo" width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <path d="M12 2L2 7L12 12L22 7L12 2Z" fill="currentColor" opacity="0.9"/>
+          <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity="0.7"/>
+          <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity="0.8"/>
+        </svg>
+        <div class="header-text">
+          <div class="app-name">AIKit</div>
+          <div class="app-subtitle">Assistant</div>
+        </div>
+      </div>
+      <div class="header-right">
+        <button id="permissionsBtn" class="icon-btn" title="Permissions">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 2L4 6V11C4 16.55 7.84 21.74 12 23C16.16 21.74 20 16.55 20 11V6L12 2Z"/>
+            <path d="M9 12L11 14L15 10"/>
+          </svg>
+        </button>
+        <button id="settingsBtn" class="icon-btn" title="Settings">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="3"/>
+            <path d="M12 1v6m0 6v6M1 12h6m6 0h6"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <div id="configPanel" class="config-panel hidden">
+      <h3>Configuration</h3>
+      <div class="form-group">
+        <label for="provider">Provider:</label>
+        <select id="provider">
+          <option value="anthropic">Anthropic</option>
+          <option value="openai">OpenAI</option>
+          <option value="google">Google</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="model">Model:</label>
+        <input type="text" id="model" value="claude-sonnet-4-20250514" placeholder="Model name">
+      </div>
+      <div class="form-group">
+        <label for="apiKey">API Key:</label>
+        <input type="password" id="apiKey" placeholder="Enter your API key">
+      </div>
+      <button id="saveConfig" class="btn btn-primary">Save & Initialize</button>
+      <div id="configStatus" class="status"></div>
+    </div>
+
+    <div class="tools-panel">
+      <h3 id="toolsHeader" class="collapsible-header">
+        <span class="collapse-icon">▼</span>
+        Registered Tools
+        <span id="toolCount" class="badge">0</span>
+      </h3>
+      <div id="toolsList" class="tools-list"></div>
+    </div>
+
+    <div class="chat-container">
+      <div id="messages" class="messages"></div>
+    </div>
+
+    <div id="statusBar" class="status-bar hidden">
+      <div class="status-icon">⏳</div>
+      <div id="statusText" class="status-text">Processing...</div>
+    </div>
+
+    <div class="input-container">
+      <textarea
+        id="promptInput"
+        class="prompt-input"
+        placeholder="Ask me anything... (e.g., 'Open google.com in a new tab')"
+        rows="3"
+      ></textarea>
+      <button id="sendBtn" class="btn btn-send">Send</button>
+      <button id="stopBtn" class="btn btn-stop hidden">Stop</button>
+    </div>
+
+    <div id="permissionModal" class="permission-modal hidden">
+      <div class="permission-overlay"></div>
+      <div class="permission-dialog">
+        <div class="permission-header">
+          <svg class="permission-icon" width="28" height="28" viewBox="0 0 24 24" fill="none">
+            <path d="M12 2L4 6V11C4 16.55 7.84 21.74 12 23C16.16 21.74 20 16.55 20 11V6L12 2Z"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M9 12L11 14L15 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <h3>Permission Required</h3>
+        </div>
+
+        <div class="permission-body">
+          <div class="permission-section">
+            <label class="permission-label">Tool:</label>
+            <div id="permToolName" class="permission-value"></div>
+          </div>
+
+          <div class="permission-section">
+            <label class="permission-label">Description:</label>
+            <div id="permToolDescription" class="permission-value"></div>
+          </div>
+
+          <div id="permDomainSection" class="permission-section hidden">
+            <label class="permission-label">Domain:</label>
+            <div id="permDomain" class="permission-value domain-badge"></div>
+          </div>
+
+          <div class="permission-section">
+            <label class="permission-label">Parameters:</label>
+            <pre id="permParams" class="permission-params"></pre>
+          </div>
+        </div>
+
+        <div class="permission-options">
+          <label class="permission-checkbox">
+            <input type="checkbox" id="permRemember">
+            <span>Don't ask again</span>
+          </label>
+
+          <div id="permScopeOptions" class="permission-scope hidden">
+            <label class="permission-radio">
+              <input type="radio" name="permScope" value="global" checked>
+              <span>For all websites</span>
+            </label>
+            <label class="permission-radio">
+              <input type="radio" name="permScope" value="domain">
+              <span>Only for <span id="permScopeDomain"></span></span>
+            </label>
+          </div>
+        </div>
+
+        <div class="permission-actions">
+          <button id="permDenyBtn" class="btn btn-deny">Deny</button>
+          <button id="permAllowBtn" class="btn btn-allow">Allow</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="sidebar.js"></script>
+</body>
+</html>
