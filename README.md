@@ -1,6 +1,54 @@
 # AIKit - Extensible AI Assistant for Firefox
 
+**Note: This is a Proof of Concept (PoC) demonstrating AI-powered browser automation through an extensible tool system. Built with vibecoding - following the flow and exploring what's possible.**
+
 AIKit is a modular add-on system for Firefox that enables interaction with various AI models (Anthropic, OpenAI, Google) through a sidebar interface, using an extensible tool system.
+
+## ⚠️ Security and Privacy Warning
+
+**This project is a security and privacy nightmare by design.** Before using AIKit, understand what you're sharing:
+
+### What Gets Transmitted to Third Parties
+
+When you use AIKit, the following data is sent to AI providers (Anthropic, OpenAI, or Google):
+
+- **Your prompts and commands** - Everything you type in the chat
+- **Tab information** - URLs, titles, and metadata of all your open tabs
+- **Browsing history** - When using history search
+- **Bookmark data** - All your saved bookmarks with URLs and titles
+- **Page content** - Full HTML, text, and DOM structure when using DOM tools
+- **Screenshots** - Visual content of web pages
+- **Download information** - Files you're downloading, their URLs and names
+- **Container data** - Your Firefox container setup and organization
+
+### Privacy Risks
+
+- **Data aggregation**: AI providers could theoretically build detailed profiles of your browsing behavior
+- **Third-party storage**: Your data passes through and may be stored by big tech companies
+- **No control**: Once data is sent, you have no control over how it's processed or stored
+- **Potential logging**: Conversations and tool calls might be logged for AI training or monitoring
+- **Sensitive information**: Personal data, credentials, financial info visible in tabs/history could be exposed
+- **Cross-site tracking**: Your browsing patterns across different sites become visible to a single entity
+
+### Recommendations
+
+- **DO NOT use with sensitive data**: Banking, healthcare, personal communications
+- **DO NOT use on work computers**: Company data could be exposed
+- **Use a separate browser profile**: Create a dedicated Firefox profile for AIKit
+- **Review what you share**: Be conscious of what tabs are open and what you're asking
+- **Consider self-hosted alternatives**: Look into local AI models if privacy is critical
+- **Read provider policies**: Understand Anthropic/OpenAI/Google's data retention policies
+- **This is a PoC**: Not intended for production use or sensitive environments
+
+### Why This Architecture?
+
+This design prioritizes functionality and ease of development over privacy. The AI needs context to be useful, but this comes at a significant privacy cost. Future iterations could explore:
+- Local AI models (though limited capabilities)
+- Differential privacy techniques
+- User-controlled data filtering
+- On-device processing where possible
+
+**Use AIKit knowing that you're trading privacy for convenience. Consider the risks carefully.**
 
 ![AIKit Screenshot](screenshot.png)
 
@@ -74,6 +122,52 @@ Other available commands:
 4. Save and initialize
 
 ## Developing New Tool Add-ons
+
+The beauty of AIKit's architecture is that **the sky's the limit** - you can create tools for virtually anything your browser can access. The current tools are just the beginning.
+
+### Potential Tool Ideas
+
+The extensible system opens up endless possibilities:
+
+**Communication & Social**
+- Gmail integration (read, compose, search emails)
+- WhatsApp Web automation (send messages, read conversations)
+- Slack, Discord, Teams integration
+- Twitter/X posting and timeline management
+- LinkedIn automation
+
+**Productivity**
+- Google Calendar/Drive integration
+- Notion, Trello, Asana task management
+- GitHub/GitLab issue and PR management
+- Jira ticket automation
+- Cloud storage operations (Dropbox, OneDrive)
+
+**E-commerce & Finance**
+- Amazon shopping and order tracking
+- Banking operations (balance checks, transaction history)
+- Stock market monitoring
+- Price comparison across sites
+- Shopping cart automation
+
+**Content & Media**
+- YouTube video management
+- Spotify/music control
+- Netflix/streaming automation
+- RSS feed aggregation
+- PDF manipulation and reading
+
+**Development Tools**
+- Code execution and testing
+- API testing and monitoring
+- Database queries
+- Server management
+- DevOps automation
+
+**And Much More...**
+The only limit is your imagination! Any web service or browser capability can become an AI-controlled tool.
+
+### Getting Started
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed instructions on creating new tool add-ons.
 
