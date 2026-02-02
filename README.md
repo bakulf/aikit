@@ -2,6 +2,8 @@
 
 AIKit is a modular add-on system for Firefox that enables interaction with various AI models (Anthropic, OpenAI, Google) through a sidebar interface, using an extensible tool system.
 
+![AIKit Screenshot](screenshot.png)
+
 ## Architecture
 
 The project consists of:
